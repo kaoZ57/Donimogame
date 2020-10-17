@@ -7,10 +7,11 @@ namespace DominnoGame
     class Board
     {
         private readonly List<Player> players;
+        private readonly List<Domino> board;
         Player player = new Player();
         Deck deck = new Deck();
         public void Play()
-        {          
+        {
 
             /*for (int i = 0; i < 28; i++)
             {
@@ -32,15 +33,20 @@ namespace DominnoGame
             player.GetDomino(deck.Deal());          
             player.Show();*/
 
-            Gameplay();
+            initialCard();
         }
-        public void Gameplay()
-        {           
+        private void initialCard()
+        {
             for (int i = 0; i < 5; i++)
             {
                 player.GetDomino(deck.Deal());
+                player.Show();
             }
-            player.Show();
+        }
+
+        public void AddPlayer(Player player)
+        {
+            players.Add(player);
         }
     }
 }
