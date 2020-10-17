@@ -17,13 +17,15 @@ namespace DominnoGame
         }
 
         public void Show()
-        { 
-            Console.WriteLine(Name);
+        {
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Playe {0}",Name);           
             for (int i = 0; i < dominoslist.Count; i++)
             {
                 Console.Write("{0}{1} ", i+1, dominoslist[i]);
             }
             Console.WriteLine("");
+            Console.WriteLine("------------------------------");
         }
 
         public void GetDomino(Domino domino)
@@ -34,10 +36,29 @@ namespace DominnoGame
         {
             return dominoslist.Count;
         }
-        public int Connect_domino(int num)
+      
+        public void Select()
         {
-            Console.WriteLine(dominoslist[num-1]);
-            return num;           
+            
         }
-    }
+
+        public Domino Move_domino(int num)
+        {
+            //Console.WriteLine(dominoslist[num-1]);
+            /*int Selection_number;
+
+        UP:
+            Console.Write("SelectionDomino = ");
+            string InputNum = Console.ReadLine();
+            try
+            {
+                Selection_number = Int32.Parse(InputNum);
+            }
+            catch (Exception)
+            {
+                goto UP;
+            }*/
+            return dominoslist[num - 1];
+        }
+    } 
 }
