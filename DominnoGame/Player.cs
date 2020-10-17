@@ -8,9 +8,9 @@ namespace DominnoGame
     class Player
     {
         public List<Domino> dominoslist;
-        public string Name;  
+        public string Name { get; private set; }
 
-        public Player(string name = "Unknown")
+        public Player(string name = "P1")
         {
             this.Name = name;
             dominoslist = new List<Domino>();
@@ -19,10 +19,11 @@ namespace DominnoGame
         public void Show()
         { 
             Console.WriteLine(Name);
-            foreach (var item in dominoslist)
+            for (int i = 0; i < dominoslist.Count; i++)
             {
-                Console.WriteLine(item);
+                Console.Write("{0}{1} ", i+1, dominoslist[i]);
             }
+            Console.WriteLine("");
         }
 
         public void GetDomino(Domino domino)
@@ -32,6 +33,11 @@ namespace DominnoGame
         public int CountDomino()
         {
             return dominoslist.Count;
+        }
+        public int Connect_domino(int num)
+        {
+            Console.WriteLine(dominoslist[num-1]);
+            return num;           
         }
     }
 }
