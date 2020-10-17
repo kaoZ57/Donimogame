@@ -10,6 +10,11 @@ namespace DominnoGame
         private readonly List<Domino> board;
         Player player = new Player();
         Deck deck = new Deck();
+        //ConsoleKeyInfo chinput = Console.ReadKey();
+        public void AddPlayer(Player player)
+        {
+            players.Add(player);
+        }
         public void Play()
         {
 
@@ -34,19 +39,33 @@ namespace DominnoGame
             player.Show();*/
 
             initialCard();
+            battle();
         }
         private void initialCard()
         {
             for (int i = 0; i < 5; i++)
             {
-                player.GetDomino(deck.Deal());
-                player.Show();
+                player.GetDomino(deck.Deal());               
             }
-        }
+            player.Show();
+        }    
 
-        public void AddPlayer(Player player)
+        public void battle()
         {
-            players.Add(player);
-        }
+            int Selection_number;          
+
+        UP:
+            Console.Write("SelectionDomino = ");
+            string InputNum = Console.ReadLine();
+            try
+            {
+                Selection_number = Int32.Parse(InputNum);
+            }
+            catch (Exception)
+            {
+                goto UP;
+            }
+            player.Connect_domino(Selection_number);
+        }      
     }
 }
