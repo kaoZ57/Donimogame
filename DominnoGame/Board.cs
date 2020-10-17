@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,27 +18,6 @@ namespace DominnoGame
         }
         public void Play()
         {
-
-            /*for (int i = 0; i < 28; i++)
-            {
-                Console.Write(i+1);
-                Console.WriteLine(deck.Deal());
-            }*/
-
-
-            /*for (int i = 0; i < 28; i++)
-            {
-                Domino domino = new Domino(i);
-                Console.Write(i+1);
-                Console.WriteLine(domino);
-            }*/
-
-            /*Player player = new Player();
-
-            player.GetDomino(deck.Deal());
-            player.GetDomino(deck.Deal());          
-            player.Show();*/
-
             initialCard();
             battle();
         }
@@ -52,8 +32,18 @@ namespace DominnoGame
 
         public void battle()
         {
-            int Selection_number;          
+            Connect_domino();
+            foreach (var d in board)
+            {
+                Console.Write("Board| ");
+                Console.Write(d);
+                Console.Write(" |");
+            }
+        }      
 
+        public void Connect_domino()
+        {
+            int Selection_number;
         UP:
             Console.Write("SelectionDomino = ");
             string InputNum = Console.ReadLine();
@@ -65,7 +55,7 @@ namespace DominnoGame
             {
                 goto UP;
             }
-            player.Connect_domino(Selection_number);
-        }      
+            board.Add(player.Move_domino(Selection_number));
+        }
     }
 }
