@@ -8,11 +8,11 @@ namespace DominnoGame
     class Player
     {
         public List<Domino> dominoslist;
-        public string Name = "P1";  
+        public string Name;  
 
-        public Player()
+        public Player(string name = "Unknown")
         {
-            //this.Name = name;
+            this.Name = name;
             dominoslist = new List<Domino>();
         }
 
