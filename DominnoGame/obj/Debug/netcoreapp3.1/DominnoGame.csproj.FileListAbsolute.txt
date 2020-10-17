@@ -11,3 +11,16 @@ C:\Users\kao_g\source\repos\DominnoGame\DominnoGame\obj\Debug\netcoreapp3.1\Domi
 C:\Users\kao_g\source\repos\DominnoGame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.dll
 C:\Users\kao_g\source\repos\DominnoGame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.pdb
 C:\Users\kao_g\source\repos\DominnoGame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.genruntimeconfig.cache
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.exe
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.deps.json
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.runtimeconfig.json
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.runtimeconfig.dev.json
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.dll
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\bin\Debug\netcoreapp3.1\DominnoGame.pdb
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.csprojAssemblyReference.cache
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.AssemblyInfoInputs.cache
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.AssemblyInfo.cs
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.csproj.CoreCompileInputs.cache
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.dll
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.pdb
+C:\Users\kao_g\OneDrive\เอกสาร\GitHub\Donimogame\DominnoGame\obj\Debug\netcoreapp3.1\DominnoGame.genruntimeconfig.cache
