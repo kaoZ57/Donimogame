@@ -9,13 +9,15 @@ namespace DominnoGame
 
             Board board = new Board();
 
-            Console.Write("Enter Name Here = ");
+            /*Console.Write("Enter Name Here = ");
             string addname = Console.ReadLine();
         
             Player player1 = new Player(addname);       
-            board.AddPlayer(player1);
+            board.AddPlayer(player1);*/
 
             board.Play();
+
+            Console.ReadKey();
         }
     }
 }
