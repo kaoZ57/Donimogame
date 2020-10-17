@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kao_g\\source\\repos\\DominnoGame\\DominnoGame\\DominnoGame.csproj",
+      "projectUniqueName": "C:\\Users\\kao_g\\OneDrive\\เอกสาร\\GitHub\\Donimogame\\DominnoGame\\DominnoGame.csproj",
       "projectName": "DominnoGame",
-      "projectPath": "C:\\Users\\kao_g\\source\\repos\\DominnoGame\\DominnoGame\\DominnoGame.csproj",
+      "projectPath": "C:\\Users\\kao_g\\OneDrive\\เอกสาร\\GitHub\\Donimogame\\DominnoGame\\DominnoGame.csproj",
       "packagesPath": "C:\\Users\\kao_g\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kao_g\\source\\repos\\DominnoGame\\DominnoGame\\obj\\",
+      "outputPath": "C:\\Users\\kao_g\\OneDrive\\เอกสาร\\GitHub\\Donimogame\\DominnoGame\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kao_g\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
