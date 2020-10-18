@@ -45,9 +45,13 @@ namespace DominnoGame
 				dominos[k] = holder;
 			}
 		}
+		public int CountDominoDeck()
+        {
+			return dominos.Length;
+		}
 
 		public Domino Deal()
-		{
+		{			
 			nextDomino--; // nextCard = nextCard - 1;
 			return dominos[nextDomino];
 		}
