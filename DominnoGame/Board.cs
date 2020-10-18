@@ -19,7 +19,7 @@ namespace DominnoGame
         public void Play()
         {
             initialCard();
-            battle();
+            //battle();
         }
         private void initialCard()
         {
@@ -56,6 +56,19 @@ namespace DominnoGame
                 goto UP;
             }
             board.Add(player.Move_domino(Selection_number));
+        }
+
+        public void ChaeckDeck()
+        {
+            //Console.WriteLine(deck.CountDominoDeck());      
+            if (deck.CountDominoDeck() == 0)
+            {
+                result();
+            }          
+        }
+        public void result()
+        {
+
         }
     }
 }
