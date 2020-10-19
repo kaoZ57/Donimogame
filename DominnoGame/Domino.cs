@@ -6,7 +6,7 @@ namespace DominnoGame
 {
     class Domino
     {
-        private int side1, side2;
+        private readonly int side1, side2; 
 
         public Domino(int num)
         {
