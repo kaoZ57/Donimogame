@@ -6,7 +6,7 @@ namespace DominnoGame
     {
         static void Main(string[] args)
         {
-
+            //Console.OutputEncoding = System.Text.Encoding.UTF8;
             Board board = new Board();
 
             /*Console.Write("Enter Name Here = ");
