@@ -35,30 +35,12 @@ namespace DominnoGame
         public int CountDomino()
         {
             return dominoslist.Count;
-        }
-      
-        public void Select()
-        {
-            
-        }
+       }  
 
         public Domino Move_domino(int num)
-        {
-            //Console.WriteLine(dominoslist[num-1]);
-            /*int Selection_number;
-
-        UP:
-            Console.Write("SelectionDomino = ");
-            string InputNum = Console.ReadLine();
-            try
-            {
-                Selection_number = Int32.Parse(InputNum);
-            }
-            catch (Exception)
-            {
-                goto UP;
-            }*/
-            return dominoslist[num - 1];
+        {          
+            //dominoslist.Remove(num - 1);
+            return dominoslist[num - 1];               
         }
     } 
 }
