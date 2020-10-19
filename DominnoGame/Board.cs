@@ -8,9 +8,11 @@ namespace DominnoGame
     class Board
     {
         private readonly List<Player> players;
-        private readonly List<Domino> board;
+        private List<Domino> board = new List<Domino>();
         Player player = new Player();
         Deck deck = new Deck();
+        int _CountDominoDeck = 28;
+        int Round = 1;
         //ConsoleKeyInfo chinput = Console.ReadKey();
         public void AddPlayer(Player player)
         {
@@ -19,27 +21,43 @@ namespace DominnoGame
         public void Play()
         {
             initialCard();
-            //battle();
+            battle();
         }
         private void initialCard()
         {
             for (int i = 0; i < 5; i++)
             {
-                player.GetDomino(deck.Deal());               
+                player.GetDomino(deck.Deal());
+                _CountDominoDeck -= 1;
             }
-            player.Show();
         }    
 
         public void battle()
         {
-            Connect_domino();
-            foreach (var d in board)
+        UP:
+            Console.Clear();
+            
+            if (_CountDominoDeck == 0)
             {
-                Console.Write("Board| ");
-                Console.Write(d);
-                Console.Write(" |");
+                result();
             }
-        }      
+            else
+            {
+                Console.WriteLine("***********************");
+                Console.WriteLine("| Number of domino {0} |", _CountDominoDeck);
+                Console.WriteLine("***********************");
+                Console.Write("Board|");
+                foreach (var d in board)
+                {
+                    Console.Write(d);
+                    Console.Write("|");
+                }
+                Console.WriteLine("");
+                player.Show();
+                Connect_domino();               
+                goto UP;
+            }           
+        }
 
         public void Connect_domino()
         {
@@ -55,20 +73,25 @@ namespace DominnoGame
             {
                 goto UP;
             }
-            board.Add(player.Move_domino(Selection_number));
-        }
-
-        public void ChaeckDeck()
-        {
-            //Console.WriteLine(deck.CountDominoDeck());      
-            if (deck.CountDominoDeck() == 0)
+            if(Selection_number > player.dominoslist.Count)
             {
-                result();
-            }          
+                goto UP;
+            }
+
+            if(Round == 1)
+            {
+                board.Add(player.Move_domino(Selection_number));
+            }
+            else
+            {
+                //player.dominoslist[Selection_number - 1];
+                board.Add(player.Move_domino(Selection_number));
+            }
         }
+      
         public void result()
         {
-
+            Console.WriteLine("End");
         }
     }
 }
