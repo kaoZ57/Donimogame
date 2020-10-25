@@ -7,10 +7,18 @@ namespace DominnoGame
 {
     class Player
     {
-        public List<Domino> dominoslist;
+        private readonly List<Domino> dominoslist;
         public string Name { get; private set; }
-        ConsoleKeyInfo chinput = Console.ReadKey();
-
+        public List<int> NumHeadDrop;
+        Board GetBoard;
+        //ConsoleKeyInfo chinput = Console.ReadKey();
+        public List<int> NumDrop
+        {
+            get
+            {
+                return NumHeadDrop;
+            }
+        }
         public Player(string name = "P1")
         {
             this.Name = name;
@@ -71,14 +79,30 @@ namespace DominnoGame
             return dominoslist[0];
         }
 
-        public int CheckDomino()
+        public void CheckDomino()
         {
-            foreach (var d in dominoslist)
+            for (int i = 0; i < dominoslist.Count; i++)
             {
-                Console.WriteLine(d);
-                //FirstCheckHand();             
+                if (dominoslist[i].Side1 == GetBoard.FirstCheckHand().Side1)
+                {
+                    NumHeadDrop.Add(i);
+                }
+                else
+                {
+                    continue;
+                }
             }
-            return 1;
+            for (int i = 0; i < dominoslist.Count; i++)
+            {
+                if (dominoslist[i].Side2 == GetBoard.FirstCheckHand().Side2)
+                {
+                    NumHeadDrop.Add(i);
+                }
+                else
+                {
+                    continue;
+                }
+            }
         }
     }
 }
