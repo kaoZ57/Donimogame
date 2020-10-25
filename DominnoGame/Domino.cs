@@ -6,11 +6,24 @@ namespace DominnoGame
 {
     class Domino
     {
-        private readonly int side1, side2; 
-
+        private readonly int side1, side2;
+        public int Side1
+        {
+            get
+            {
+                return side1;
+            }
+        }
+        public int Side2
+        {
+            get
+            {
+                return side2;
+            }
+        }
         public Domino(int num)
         {
-            if(num > 27)
+            if (num > 27)
             {
                 ToString();
             }
@@ -19,7 +32,7 @@ namespace DominnoGame
                 side1 = 6;
                 side2 = 6;
             }
-            else if(num > 24)
+            else if (num > 24)
             {
                 side1 = 5;
                 side2 = num - 20;
@@ -63,7 +76,7 @@ namespace DominnoGame
             text1 = side1.ToString();
             text2 = side2.ToString();
 
-            text = "["+text1+"|"+text2+"]";
+            text = "[" + text1 + "|" + text2 + "]";
 
             return text;
         }
