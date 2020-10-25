@@ -4,11 +4,20 @@ using System.Text;
 
 namespace DominnoGame
 {
-    class Deck
-    {
+	class Deck
+	{
 		Domino[] dominos;
 		int nextDomino;
 		Random random;
+
+		public int Count
+		{
+			get
+			{
+				return nextDomino;
+			}
+			set { }
+		}
 
 		public Deck()
 		{
@@ -16,7 +25,7 @@ namespace DominnoGame
 			dominos = new Domino[28];
 			Initialize();
 
-            /*foreach (var item in Dominos)
+			/*foreach (var item in Dominos)
             {
                 Console.WriteLine(item);
             }*/
@@ -40,18 +49,18 @@ namespace DominnoGame
 			{
 				j = random.Next(dominos.Length);
 				holder = dominos[j];
-				k = random.Next( dominos.Length);
+				k = random.Next(dominos.Length);
 				dominos[j] = dominos[k];
 				dominos[k] = holder;
 			}
 		}
 		public int CountDominoDeck()
-        {
+		{
 			return dominos.Length;
 		}
 
 		public Domino Deal()
-		{			
+		{
 			nextDomino--; // nextCard = nextCard - 1;
 			return dominos[nextDomino];
 		}
