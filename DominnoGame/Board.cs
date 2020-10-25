@@ -8,12 +8,29 @@ namespace DominnoGame
     class Board
     {
         private readonly List<Player> players;
-        private List<Domino> board = new List<Domino>();
+        private readonly List<Domino> board = new List<Domino>();
+        private readonly Player dealer;
         Deck deck = new Deck();
-        private Player dealer;
-        int Round = 1;
+        Player GetPlayer;
+        private int Round = 1;
         //ConsoleKeyInfo chinput = Console.ReadKey();
 
+        /*public Domino FirstCheckHand
+        {
+            get
+            {
+                return board[0];
+            }
+            set { }
+        }
+        public Domino LastCheckHand
+        {
+            get
+            {
+                return board[board.Count];
+            }
+            set { }
+        }*/
         public Board(string dealerName)
         {
             this.dealer = new Player(dealerName);
@@ -38,7 +55,7 @@ namespace DominnoGame
                 {
                     P.GetDomino(deck.Deal());
                 }
-                dealer.GetDomino(deck.Deal());
+                //dealer.GetDomino(deck.Deal());
             }
         }
 
@@ -64,9 +81,17 @@ namespace DominnoGame
                     Console.Write("|");
                 }
                 Console.WriteLine("");
-               
+
 
                 players[0].Show();
+                /*if (board.Count > 0)
+                {
+                    GetPlayer.CheckDomino();
+                    foreach (var item in GetPlayer.NumDrop)
+                    {
+                        Console.WriteLine(item);
+                    }             
+                }*/
 
                 /*foreach (var P in players)
                 {
@@ -80,20 +105,20 @@ namespace DominnoGame
 
         public void Connect_domino()
         {
-        /*foreach (var P in players)
-        {
-            Domino d = P.SelectDomino();
-            board.Add(P.DropDomino(d));
-        }*/
-        if (Round == 1)
+            /*foreach (var P in players)
+            {
+                Domino d = P.SelectDomino();
+                board.Add(P.DropDomino(d));
+            }*/
+            if (Round == 1)
             {
                 Domino d = players[0].SelectDomino();
                 board.Add(players[0].DropDomino(d));
 
-                Domino D = dealer.AILogic();
-                board.Add(dealer.DropDomino(D));
+                /*Domino D = dealer.AILogic();
+                board.Add(dealer.DropDomino(D));*/
             }
-        else
+            else
             {
             Up:
                 Console.Write("GetDonimo? (y/n): ");
@@ -107,13 +132,13 @@ namespace DominnoGame
                         Domino d = players[0].SelectDomino();
                         board.Add(players[0].DropDomino(d));
 
-                        Domino D = dealer.AILogic();
-                        board.Add(dealer.DropDomino(D));
+                        /*Domino D = dealer.AILogic();
+                        board.Add(dealer.DropDomino(D));*/
                         break;
                     default:
                         goto Up;
                 }
-            }      
+            }
         }
 
         public void result()
