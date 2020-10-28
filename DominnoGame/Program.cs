@@ -6,18 +6,17 @@ namespace DominnoGame
     {
         static void Main(string[] args)
         {
-
+            
             //Console.OutputEncoding = System.Text.Encoding.UTF8;
             Board board = new Board("dealer");
             //Board board = new Board();
 
             /*Console.Write("Enter Name Here = ");
-            string addname = Console.ReadLine();*/
+            string addname = Console.ReadLine();
 
-            board.AddPlayer(new Player("P1"));
+            board.AddPlayer(new Player("P1"));*/
 
             board.Play();
-
 
             //testDropDomono();
             Console.ReadKey();
