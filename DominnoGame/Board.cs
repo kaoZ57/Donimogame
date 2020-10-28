@@ -5,17 +5,16 @@ using System.Text;
 
 namespace DominnoGame
 {
-    class Board
-    {
+    class Board 
+    { 
         private readonly List<Player> players;
-        private readonly List<Domino> board = new List<Domino>();
+        private List<Domino> board = new List<Domino>();
         private readonly Player dealer;
         Deck deck = new Deck();
-        Player GetPlayer;
         private int Round = 1;
         //ConsoleKeyInfo chinput = Console.ReadKey();
 
-        /*public Domino FirstCheckHand
+        public Domino FirstCheckHand
         {
             get
             {
@@ -30,7 +29,7 @@ namespace DominnoGame
                 return board[board.Count];
             }
             set { }
-        }*/
+        }
         public Board(string dealerName)
         {
             this.dealer = new Player(dealerName);
@@ -82,7 +81,6 @@ namespace DominnoGame
                 }
                 Console.WriteLine("");
 
-
                 players[0].Show();
                 /*if (board.Count > 0)
                 {
@@ -114,7 +112,7 @@ namespace DominnoGame
             {
                 Domino d = players[0].SelectDomino();
                 board.Add(players[0].DropDomino(d));
-
+                players[0].BoardCheck(d);
                 /*Domino D = dealer.AILogic();
                 board.Add(dealer.DropDomino(D));*/
             }
@@ -130,8 +128,10 @@ namespace DominnoGame
                         break;
                     case "n":
                         Domino d = players[0].SelectDomino();
+                        players[0].BoardCheck(d);
                         board.Add(players[0].DropDomino(d));
-
+                        players[0].CheckDomino();
+                        players[0].ShowDomninoCheck();
                         /*Domino D = dealer.AILogic();
                         board.Add(dealer.DropDomino(D));*/
                         break;
@@ -145,14 +145,6 @@ namespace DominnoGame
         {
             Console.WriteLine("End");
         }
-
-        public Domino FirstCheckHand()
-        {
-            return board[0];
-        }
-        public Domino LastCheckHand()
-        {
-            return board[board.Count];
-        }
     }
 }
+    
