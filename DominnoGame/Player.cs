@@ -5,20 +5,23 @@ using System.Text;
 
 namespace DominnoGame
 {
-    class Player
+    class Player 
     {
         private readonly List<Domino> dominoslist;
         public string Name { get; private set; }
-        public List<int> NumHeadDrop;
-        Board GetBoard;
+        public List<int> NumHeadDrop = new List<int>();
+        public List<Domino> boardcheck = new List<Domino>();
+        //public readonly Board board;
         //ConsoleKeyInfo chinput = Console.ReadKey();
-        public List<int> NumDrop
+
+        public List<Domino> Dominolisthand
         {
             get
             {
-                return NumHeadDrop;
+                return dominoslist;
             }
         }
+    
         public Player(string name = "P1")
         {
             this.Name = name;
@@ -37,6 +40,13 @@ namespace DominnoGame
             Console.WriteLine("------------------------------");
         }
 
+        public void ShowDomninoCheck()
+        {
+            foreach (var item in NumHeadDrop)
+            {
+                Console.Write("{0},", item);              
+            }
+        }
         public void GetDomino(Domino domino)
         {
             dominoslist.Add(domino);
@@ -79,13 +89,29 @@ namespace DominnoGame
             return dominoslist[0];
         }
 
+        public void BoardCheck(Domino domino) 
+        {
+            boardcheck.Add(domino);
+        }
+        public void showboard()
+        {
+            foreach (var item in boardcheck)
+            {
+                Console.Write(item);
+            }
+        }
+
         public void CheckDomino()
         {
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (dominoslist[i].Side1 == GetBoard.FirstCheckHand().Side1)
+                if (dominoslist[i].Side1 == boardcheck[boardcheck.Count].Side2)
                 {
                     NumHeadDrop.Add(i);
+                }            
+                else if(i == dominoslist.Count)
+                {
+                    break;
                 }
                 else
                 {
@@ -94,14 +120,18 @@ namespace DominnoGame
             }
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (dominoslist[i].Side2 == GetBoard.FirstCheckHand().Side2)
+                if (dominoslist[i].Side2 == boardcheck[0].Side1)
                 {
                     NumHeadDrop.Add(i);
+                }
+                else if(i == dominoslist.Count) 
+                {
+                    break;
                 }
                 else
                 {
                     continue;
-                }
+                }                
             }
         }
     }
