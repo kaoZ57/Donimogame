@@ -7,21 +7,13 @@ namespace DominnoGame
 {
     class Player 
     {
-        private readonly List<Domino> dominoslist;
+        public readonly List<Domino> dominoslist;
         public string Name { get; private set; }
         public List<int> NumHeadDrop = new List<int>();
         public List<Domino> boardcheck = new List<Domino>();
-        //public readonly Board board;
+        //public Board board;
         //ConsoleKeyInfo chinput = Console.ReadKey();
 
-        public List<Domino> Dominolisthand
-        {
-            get
-            {
-                return dominoslist;
-            }
-        }
-    
         public Player(string name = "P1")
         {
             this.Name = name;
@@ -44,7 +36,8 @@ namespace DominnoGame
         {
             foreach (var item in NumHeadDrop)
             {
-                Console.Write("{0},", item);              
+                int sum = item + 1;
+                Console.Write("{0} ", sum);              
             }
         }
         public void GetDomino(Domino domino)
@@ -70,10 +63,25 @@ namespace DominnoGame
             {
                 goto UP;
             }
-            if (Selection_number > dominoslist.Count)
+            if (Selection_number > dominoslist.Count || Selection_number < 1) 
             {
                 goto UP;
             }
+            foreach (var item in NumHeadDrop)
+            {
+                int sum = item + 1;
+                if (sum == Selection_number)
+                {
+                    goto Down;
+                }
+                else
+                {
+                    goto UP;
+                }
+            }
+        Down:
+            //NumHeadDrop.Clear();
+            //NumHeadDrop.RemoveAll(i => i == 0);
             return dominoslist[Selection_number - 1];
         }
 
@@ -105,7 +113,7 @@ namespace DominnoGame
         {
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (dominoslist[i].Side1 == boardcheck[boardcheck.Count].Side2)
+                if (dominoslist[i].Side1 == boardcheck[boardcheck.Count - 1].Side2)
                 {
                     NumHeadDrop.Add(i);
                 }            
