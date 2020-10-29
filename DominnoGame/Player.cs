@@ -7,13 +7,27 @@ namespace DominnoGame
 {
     class Player 
     {
-        public readonly List<Domino> dominoslist;
-        public string Name { get; private set; }
-        public List<int> NumHeadDrop = new List<int>();
-        public List<Domino> boardcheck = new List<Domino>();
+        private readonly List<Domino> dominoslist;
+        private string Name;
+        private List<int> NumHeadDrop = new List<int>();
+        private LinkedList<Domino> boardcheck = new LinkedList<Domino>();
+        private int Round = 1;
         //public Board board;
         //ConsoleKeyInfo chinput = Console.ReadKey();
-
+        public int NumHeadCount
+        {
+            get
+            {
+                return NumHeadDrop.Count;
+            }
+        }
+        public LinkedList<Domino> Pboard
+        {
+            get
+            {
+                return boardcheck;
+            }
+        }
         public Player(string name = "P1")
         {
             this.Name = name;
@@ -22,6 +36,7 @@ namespace DominnoGame
 
         public void Show()
         {
+
             Console.WriteLine("------------------------------");
             Console.WriteLine("Player {0}", Name);
             for (int i = 0; i < dominoslist.Count; i++)
@@ -34,10 +49,20 @@ namespace DominnoGame
 
         public void ShowDomninoCheck()
         {
+            Console.Write("NumHeadDrop = ");
             foreach (var item in NumHeadDrop)
             {
                 int sum = item + 1;
                 Console.Write("{0} ", sum);              
+            }
+            Console.WriteLine("");
+            Console.WriteLine("-----------------------");
+        }
+        public void showboard()
+        {
+            foreach (var item in boardcheck)
+            {
+                Console.Write(item);
             }
         }
         public void GetDomino(Domino domino)
@@ -80,7 +105,7 @@ namespace DominnoGame
                 }
             }
         Down:
-            //NumHeadDrop.Clear();
+            NumHeadDrop.Clear();
             //NumHeadDrop.RemoveAll(i => i == 0);
             return dominoslist[Selection_number - 1];
         }
@@ -96,24 +121,28 @@ namespace DominnoGame
         {
             return dominoslist[0];
         }
-
-        public void BoardCheck(Domino domino) 
-        {
-            boardcheck.Add(domino);
-        }
-        public void showboard()
-        {
-            foreach (var item in boardcheck)
-            {
-                Console.Write(item);
-            }
-        }
+ 
 
         public void CheckDomino()
         {
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (dominoslist[i].Side1 == boardcheck[boardcheck.Count - 1].Side2)
+                if (Round != 1)
+                {
+                    foreach (var item in NumHeadDrop)
+                    {
+                        if (i == NumHeadDrop[item])
+                        {
+                            NumHeadDrop.Remove(item);
+                        }
+                        else
+                        {
+                            continue;
+
+                        }
+                    }
+                }
+                else if (dominoslist[i].Side1 == boardcheck.Last.Value.Side2)
                 {
                     NumHeadDrop.Add(i);
                 }            
@@ -128,11 +157,26 @@ namespace DominnoGame
             }
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (dominoslist[i].Side2 == boardcheck[0].Side1)
+                if (Round != 1)
+                {
+                    foreach (var item in NumHeadDrop)
+                    {
+                        if (i == NumHeadDrop[item])
+                        {
+                            NumHeadDrop.Remove(item);
+                        }
+                        else
+                        {
+                            continue;
+
+                        }
+                    }
+                }
+                else if (dominoslist[i].Side2 == boardcheck.First.Value.Side1)
                 {
                     NumHeadDrop.Add(i);
                 }
-                else if(i == dominoslist.Count) 
+                else if (i == dominoslist.Count)
                 {
                     break;
                 }
