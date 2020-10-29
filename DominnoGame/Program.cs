@@ -18,7 +18,7 @@ namespace DominnoGame
             string addname = Console.ReadLine();*/
 
             Board board = new Board("dealer");
-            board.AddPlayer(new Player("P1"));
+            board.AddPlayer(new Player("kao"));
 
             board.Play();
 
