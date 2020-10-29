@@ -34,9 +34,9 @@ namespace DominnoGame
 
             for (int i = 0; i < 5; i++)
             {
-                foreach (var P in players)
+                foreach (var player in players)
                 {
-                    P.GetDomino(deck.Deal());
+                    player.GetDomino(deck.Deal());
                 }
                 //dealer.GetDomino(deck.Deal());
             }
@@ -64,87 +64,66 @@ namespace DominnoGame
                     Console.Write("|");
                 }
                 Console.WriteLine("");
+                players[0].showboard();
                 players[0].Show();
-                Console.Write("NumHeadDrop = ");
                 players[0].ShowDomninoCheck();
-                Console.WriteLine("");
-                Console.WriteLine("-----------------------");
                 Connect_domino();
-                Round =+ 1;
+                Round = Round + 1;
                 goto UP;
             }
         }
 
         public void Connect_domino()
         {
-            /*foreach (var P in players)
+            foreach (var player in players)
             {
-                Domino d = P.SelectDomino();
-                board.Add(P.DropDomino(d));
-            }*/
-            if (Round == 1)
-            {
-                Domino domino = players[0].SelectDomino();
-                board.AddLast(players[0].DropDomino(domino));
-                players[0].BoardCheck(domino);
-                players[0].CheckDomino();
-                /*Domino D = dealer.AILogic();
-                board.Add(dealer.DropDomino(D));*/
-            }
-            else
-            {
-            Up:
-                Console.WriteLine(players[0].NumHeadDrop.Count);
-                if (players[0].NumHeadDrop.Count == 0)
+                if (Round == 1)
                 {
-                    players[0].GetDomino(deck.Deal());
-                    players[0].CheckDomino();
-                    goto Up;
+                    Domino domino = player.SelectDomino();
+                    board.AddLast(player.DropDomino(domino));
+                    player.Pboard.AddFirst(domino);
+                    player.CheckDomino();
+                    /*Domino D = dealer.AILogic();
+                    board.Add(dealer.DropDomino(D));*/
+                }
+                else if (player.NumHeadCount == 0)
+                {
+                    player.GetDomino(deck.Deal());
+                    player.CheckDomino();
                 }
                 else
                 {
-                    Domino domino = players[0].SelectDomino();
-                    players[0].DropDomino(domino);
-                    if (domino.Side2 == board.First.Value.Side1)
+                Up:
+                    Console.Write("GetDonimo? (y/n): ");
+                    string input = Console.ReadLine().ToLower();
+                    switch (input)
                     {
-                        board.AddFirst(domino);
+                        case "y":
+                            player.GetDomino(deck.Deal());
+                            player.CheckDomino();
+                            break;
+                        case "n":
+                            Domino domino = player.SelectDomino();
+                            player.DropDomino(domino);
+                            if (domino.Side2 == board.First.Value.Side1)
+                            {
+                                board.AddFirst(domino);
+                                player.Pboard.AddFirst(domino);
+                            }
+                            else
+                            {
+                                board.AddLast(domino);
+                                player.Pboard.AddLast(domino);
+                            }
+                            player.CheckDomino();
+                            /*Domino D = dealer.AILogic();
+                            board.Add(dealer.DropDomino(D));*/
+                            break;
+                        default:
+                            goto Up;
                     }
-                    else
-                    {
-                        board.AddLast(players[0].DropDomino(domino));
-                    }
-                    players[0].BoardCheck(domino);
-                    players[0].CheckDomino();          
                 }
-                /*
-            Up:
-                Console.Write("GetDonimo? (y/n): ");
-                string input = Console.ReadLine().ToLower();
-                switch (input)
-                {
-                    case "y":
-                        players[0].GetDomino(deck.Deal());
-                        players[0].CheckDomino();
-                        break;
-                    case "n":
-                        Domino domino = players[0].SelectDomino();
-                        if (domino.Side2 == board.First.Value.Side1)
-                        {
-                            board.AddFirst(domino);
-                        }
-                        else
-                        {
-                            board.AddLast(players[0].DropDomino(domino));
-                        }
-                        players[0].BoardCheck(domino);
-                        players[0].CheckDomino();
-                        /*Domino D = dealer.AILogic();
-                        board.Add(dealer.DropDomino(D));*
-                        break;
-                    default:
-                        goto Up;
-                } */
-            }
+            } 
         }
 
         public void result()
