@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace DominnoGame
@@ -11,7 +12,6 @@ namespace DominnoGame
         private string Name;
         private List<int> NumHeadDrop = new List<int>();
         private LinkedList<Domino> boardcheck = new LinkedList<Domino>();
-        private int Round = 1;
         //public Board board;
         //ConsoleKeyInfo chinput = Console.ReadKey();
         public int NumHeadCount
@@ -33,7 +33,6 @@ namespace DominnoGame
             this.Name = name;
             dominoslist = new List<Domino>();
         }
-
         public void Show()
         {
 
@@ -46,11 +45,15 @@ namespace DominnoGame
             Console.WriteLine("");
             Console.WriteLine("------------------------------");
         }
-
+        public void GetDomino(Domino domino)
+        {
+            dominoslist.Add(domino);
+        }
         public void ShowDomninoCheck()
         {
+            List<int> NumHeadDropNew = NumHeadDrop.Distinct().ToList();
             Console.Write("NumHeadDrop = ");
-            foreach (var item in NumHeadDrop)
+            foreach (var item in NumHeadDropNew)
             {
                 int sum = item + 1;
                 Console.Write("{0} ", sum);              
@@ -65,19 +68,19 @@ namespace DominnoGame
                 Console.Write(item);
             }
         }
-        public void GetDomino(Domino domino)
-        {
-            dominoslist.Add(domino);
-        }
         public int CountDomino()
         {
             return dominoslist.Count;
         }
         public Domino SelectDomino()
         {
-            int Selection_number;
-
+            List<int> NumHeadDropNew = NumHeadDrop.Distinct().ToList();
+            int Selection_number;      
         UP:
+            foreach (var item in NumHeadDropNew)
+            {
+                Console.Write(item + 1);
+            }
             Console.Write("SelectionDomino = ");
             string InputNum = Console.ReadLine();
             try
@@ -92,16 +95,15 @@ namespace DominnoGame
             {
                 goto UP;
             }
-            foreach (var item in NumHeadDrop)
+            foreach (var item in NumHeadDropNew)
             {
-                int sum = item + 1;
-                if (sum == Selection_number)
+                if (item + 1 == Selection_number)
                 {
                     goto Down;
                 }
                 else
                 {
-                    goto UP;
+                    continue;
                 }
             }
         Down:
@@ -126,23 +128,8 @@ namespace DominnoGame
         public void CheckDomino()
         {
             for (int i = 0; i < dominoslist.Count; i++)
-            {
-                if (Round != 1)
-                {
-                    foreach (var item in NumHeadDrop)
-                    {
-                        if (i == NumHeadDrop[item])
-                        {
-                            NumHeadDrop.Remove(item);
-                        }
-                        else
-                        {
-                            continue;
-
-                        }
-                    }
-                }
-                else if (dominoslist[i].Side1 == boardcheck.Last.Value.Side2)
+            {       
+                if (dominoslist[i].Side1 == boardcheck.Last.Value.Side2)
                 {
                     NumHeadDrop.Add(i);
                 }            
@@ -157,22 +144,7 @@ namespace DominnoGame
             }
             for (int i = 0; i < dominoslist.Count; i++)
             {
-                if (Round != 1)
-                {
-                    foreach (var item in NumHeadDrop)
-                    {
-                        if (i == NumHeadDrop[item])
-                        {
-                            NumHeadDrop.Remove(item);
-                        }
-                        else
-                        {
-                            continue;
-
-                        }
-                    }
-                }
-                else if (dominoslist[i].Side2 == boardcheck.First.Value.Side1)
+                if (dominoslist[i].Side2 == boardcheck.First.Value.Side1)
                 {
                     NumHeadDrop.Add(i);
                 }
