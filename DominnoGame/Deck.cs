@@ -6,9 +6,9 @@ namespace DominnoGame
 {
 	class Deck
 	{
-		Domino[] dominos;
-		int nextDomino;
-		Random random;
+		private Domino[] dominos;
+		private int nextDomino;
+		private Random random;
 
 		public int Count
 		{
