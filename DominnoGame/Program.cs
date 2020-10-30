@@ -14,11 +14,11 @@ namespace DominnoGame
 
             //Board board = new Board();
 
-            /*Console.Write("Enter Name Here = ");
-            string addname = Console.ReadLine();*/
+            Console.Write("Enter Name Here = ");
+            string addname = Console.ReadLine();
 
-            Board board = new Board("dealer");
-            board.AddPlayer(new Player("Kao"));
+            Board board = new Board();
+            board.AddPlayer(new Player(addname));
             board.AddPlayer(new Player("Fluke"));
 
             board.Play();
