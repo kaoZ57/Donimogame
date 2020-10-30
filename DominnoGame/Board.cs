@@ -10,14 +10,11 @@ namespace DominnoGame
     {
         private List<Player> players; 
         private LinkedList<Domino> board = new LinkedList<Domino>();
-        private readonly Player dealer;
         private Deck deck = new Deck();
         private int Round = 1;
-        //ConsoleKeyInfo chinput = Console.ReadKey();
 
-        public Board(string dealerName)
+        public Board()
         {
-            this.dealer = new Player(dealerName);
             players = new List<Player>();
 
         }
@@ -52,7 +49,6 @@ namespace DominnoGame
                 {
                     player.GetDomino(deck.Deal());
                 }
-                //dealer.GetDomino(deck.Deal());
             }
         }
 
@@ -80,7 +76,7 @@ namespace DominnoGame
                     Console.WriteLine("");
                     //players[0].showboard();
                     players[i].Show();
-                    //players[i].ShowDomninoCheck();
+                    players[i].ShowDomninoCheck();
                     Connect_domino(players[i], i);
                     Round = Round + 1;
                     if (deck.Count == 0)
@@ -102,8 +98,6 @@ namespace DominnoGame
                 players[num + 1].Pboard.AddFirst(domino);
                 player.CheckDomino();
                 players[num + 1].CheckDomino();
-                /*Domino D = dealer.AILogic();
-                board.Add(dealer.DropDomino(D));*/
             }
             else if (player.NumHeadCount == 0)
             {
@@ -144,8 +138,6 @@ namespace DominnoGame
                             }      
                         }
                         player.CheckDomino();
-                        /*Domino D = dealer.AILogic();
-                        board.Add(dealer.DropDomino(D));*/
                         break;
                     default:
                         goto Up;
