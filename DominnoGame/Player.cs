@@ -8,12 +8,18 @@ namespace DominnoGame
 {
     class Player 
     {
-        private readonly List<Domino> dominoslist;
-        private string Name;
+        private List<Domino> dominoslist;
+        public string Name { get; private set; }
+        public int Score { get; set; }
         private List<int> NumHeadDrop = new List<int>();
-        private LinkedList<Domino> boardcheck = new LinkedList<Domino>();
+        private readonly LinkedList<Domino> boardcheck = new LinkedList<Domino>();
         //public Board board;
         //ConsoleKeyInfo chinput = Console.ReadKey();
+        public List<int> Numhead()
+        {
+            List<int> NumHeadDropNew = NumHeadDrop.Distinct().ToList();
+            return NumHeadDropNew;
+        }
         public int NumHeadCount
         {
             get
@@ -27,6 +33,18 @@ namespace DominnoGame
             {
                 return boardcheck;
             }
+        }
+        public List<Domino> Dominoslist
+        {
+            get
+            {
+                return dominoslist;
+            }
+        }
+
+        public void Addscore(int score)
+        {
+            this.Score = Score + score;
         }
         public Player(string name = "P1")
         {
@@ -51,9 +69,8 @@ namespace DominnoGame
         }
         public void ShowDomninoCheck()
         {
-            List<int> NumHeadDropNew = NumHeadDrop.Distinct().ToList();
             Console.Write("NumHeadDrop = ");
-            foreach (var item in NumHeadDropNew)
+            foreach (var item in Numhead())
             {
                 int sum = item + 1;
                 Console.Write("{0} ", sum);              
@@ -74,13 +91,9 @@ namespace DominnoGame
         }
         public Domino SelectDomino()
         {
-            List<int> NumHeadDropNew = NumHeadDrop.Distinct().ToList();
-            int Selection_number;      
+            int Selection_number;
         UP:
-            foreach (var item in NumHeadDropNew)
-            {
-                Console.Write(item + 1);
-            }
+            //ShowDomninoCheck();
             Console.Write("SelectionDomino = ");
             string InputNum = Console.ReadLine();
             try
@@ -95,7 +108,7 @@ namespace DominnoGame
             {
                 goto UP;
             }
-            foreach (var item in NumHeadDropNew)
+            foreach (var item in Numhead())
             {
                 if (item + 1 == Selection_number)
                 {
@@ -157,6 +170,13 @@ namespace DominnoGame
                     continue;
                 }                
             }
+        }
+        public void Clear()
+        {
+            dominoslist.Clear();
+            NumHeadDrop.Clear();
+            boardcheck.Clear();
+            Score = 0;
         }
     }
 }
