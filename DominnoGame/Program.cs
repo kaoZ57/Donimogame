@@ -19,6 +19,7 @@ namespace DominnoGame
 
             Board board = new Board("dealer");
             board.AddPlayer(new Player("kao"));
+            board.AddPlayer(new Player("Eak"));
 
             board.Play();
 
