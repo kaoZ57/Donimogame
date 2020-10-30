@@ -72,8 +72,7 @@ namespace DominnoGame
             Console.Write("NumHeadDrop = ");
             foreach (var item in Numhead())
             {
-                int sum = item + 1;
-                Console.Write("{0} ", sum);              
+                Console.Write("{0} ", item + 1);              
             }
             Console.WriteLine("");
             Console.WriteLine("-----------------------");
@@ -131,13 +130,6 @@ namespace DominnoGame
             dominoslist.Remove(dropdomino);
             return dropdomino;
         }
-
-        public Domino AILogic()
-        {
-            return dominoslist[0];
-        }
- 
-
         public void CheckDomino()
         {
             for (int i = 0; i < dominoslist.Count; i++)
