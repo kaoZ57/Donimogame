@@ -16,7 +16,9 @@ namespace DominnoGame
 			{
 				return nextDomino;
 			}
-			set { }
+			set 
+			{								
+			}
 		}
 
 		public Deck()
